@@ -100,7 +100,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"always"},
+    sidebar: {"position":"left","display":"hide"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -171,6 +171,26 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/technology" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-desktop"></i> <br />
+            
+            技术
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/life" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-coffee"></i> <br />
+            
+            生活
           </a>
         </li>
       
@@ -286,8 +306,7 @@
 <li><a href="http://520ued.com/article/549125815f85b6b44ca20b2b" target="_blank" rel="external">http://520ued.com/article/549125815f85b6b44ca20b2b</a></li>
 </ul>
 <p>大致说一下实现思路：</p>
-<p>####1、通过viewport进行移动端适配：</p>
-<p>(1) 按照宽度320px实现基本网页布局及样式</p>
+<h4 id="1、通过viewport进行移动端适配："><a href="#1、通过viewport进行移动端适配：" class="headerlink" title="1、通过viewport进行移动端适配："></a>1、通过viewport进行移动端适配：</h4><p>(1) 按照宽度320px实现基本网页布局及样式</p>
 <p>(2) 动态设置viewport属性，做适当缩放</p>
 <p>  eg:通过window.screen.width获取屏幕宽度，如果当前设备屏幕宽度为320px,则缩放比例为320/320=1，<br>  动态设置viewport content initial-scale=1.0,如果屏幕宽度为375，则缩放比例为375/320=1.2</p>
 <pre><code>(function(){
@@ -348,8 +367,7 @@
   &lt;div class=&quot;footer&quot;&gt;&lt;/div&gt;
   &lt;/body&gt;
  &lt;/html&gt;
-</code></pre><p>####2、通过rem相对单位实现移动端适配</p>
-<p>大概的思路就是在html根节点定义font-size的值，及设置1rem的宽度，这个宽度也是基于320px基础进行缩放的，如果设备宽度是320px时,设置1rem=10px,对于body 32rem=32 <em> 10=320px;那么当屏幕宽度为375px是，则1rem=12px,body宽度就相应为32rem=32 </em> 12=375px。根节点单位可以通过js来进行初始化</p>
+</code></pre><h4 id="2、通过rem相对单位实现移动端适配"><a href="#2、通过rem相对单位实现移动端适配" class="headerlink" title="2、通过rem相对单位实现移动端适配"></a>2、通过rem相对单位实现移动端适配</h4><p>大概的思路就是在html根节点定义font-size的值，及设置1rem的宽度，这个宽度也是基于320px基础进行缩放的，如果设备宽度是320px时,设置1rem=10px,对于body 32rem=32 <em> 10=320px;那么当屏幕宽度为375px是，则1rem=12px,body宽度就相应为32rem=32 </em> 12=375px。根节点单位可以通过js来进行初始化</p>
 <pre><code>(function(){
    var screenwidth=window.screen.width;
    rootrem=screenwidth/320*10;
