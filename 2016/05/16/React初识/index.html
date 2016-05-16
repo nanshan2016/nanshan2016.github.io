@@ -84,40 +84,19 @@
 
 
 
-<meta name="description" content="目前，主流高性能移动端网页页面布局方案有两种（基于宽度320px，按设计图实现方式）
-1、通过设置viewport缩放来实现
-2、通过rem相对单位来实现
-viewport,rem基础知识，可参见：
-
-http://www.cnblogs.com/2050/p/3877280.html
-http://520ued.com/article/549125815f85b6b44ca20b2b
-
-大致说一">
+<meta name="description" content="一、初识：公司最近在做技术积累，打算尝试组件化开发，提高代码复用，纠结与Vue.js还是React.js,最终，因为Vue.js的大生态偏弱，文档相对较少，并且移动端需求偏多，公司有成型的node环境，React做服务器端渲染比较好，比新技术结合的也不错，所以最终还是入手React。
+因为之前做过Backbone和Angularjs的开发，最初接触node时不大喜欢它整体的编码风格，慢慢接触了几天">
 <meta property="og:type" content="article">
-<meta property="og:title" content="移动端布局方案">
-<meta property="og:url" content="http://yoursite.com/2016/05/14/移动端布局方案/index.html">
+<meta property="og:title" content="React初识">
+<meta property="og:url" content="http://yoursite.com/2016/05/16/React初识/index.html">
 <meta property="og:site_name" content="南山的博客">
-<meta property="og:description" content="目前，主流高性能移动端网页页面布局方案有两种（基于宽度320px，按设计图实现方式）
-1、通过设置viewport缩放来实现
-2、通过rem相对单位来实现
-viewport,rem基础知识，可参见：
-
-http://www.cnblogs.com/2050/p/3877280.html
-http://520ued.com/article/549125815f85b6b44ca20b2b
-
-大致说一">
-<meta property="og:updated_time" content="2016-05-14T13:31:37.000Z">
+<meta property="og:description" content="一、初识：公司最近在做技术积累，打算尝试组件化开发，提高代码复用，纠结与Vue.js还是React.js,最终，因为Vue.js的大生态偏弱，文档相对较少，并且移动端需求偏多，公司有成型的node环境，React做服务器端渲染比较好，比新技术结合的也不错，所以最终还是入手React。
+因为之前做过Backbone和Angularjs的开发，最初接触node时不大喜欢它整体的编码风格，慢慢接触了几天">
+<meta property="og:updated_time" content="2016-05-16T13:30:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="移动端布局方案">
-<meta name="twitter:description" content="目前，主流高性能移动端网页页面布局方案有两种（基于宽度320px，按设计图实现方式）
-1、通过设置viewport缩放来实现
-2、通过rem相对单位来实现
-viewport,rem基础知识，可参见：
-
-http://www.cnblogs.com/2050/p/3877280.html
-http://520ued.com/article/549125815f85b6b44ca20b2b
-
-大致说一">
+<meta name="twitter:title" content="React初识">
+<meta name="twitter:description" content="一、初识：公司最近在做技术积累，打算尝试组件化开发，提高代码复用，纠结与Vue.js还是React.js,最终，因为Vue.js的大生态偏弱，文档相对较少，并且移动端需求偏多，公司有成型的node环境，React做服务器端渲染比较好，比新技术结合的也不错，所以最终还是入手React。
+因为之前做过Backbone和Angularjs的开发，最初接触node时不大喜欢它整体的编码风格，慢慢接触了几天">
 
 
 
@@ -135,7 +114,7 @@ http://520ued.com/article/549125815f85b6b44ca20b2b
   };
 </script>
 
-  <title> 移动端布局方案 | 南山的博客 </title>
+  <title> React初识 | 南山的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -275,7 +254,7 @@ http://520ued.com/article/549125815f85b6b44ca20b2b
             
             
               
-                移动端布局方案
+                React初识
               
             
           </h1>
@@ -287,8 +266,8 @@ http://520ued.com/article/549125815f85b6b44ca20b2b
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-14T21:27:43+08:00" content="2016-05-14">
-              2016-05-14
+            <time itemprop="dateCreated" datetime="2016-05-16T21:29:52+08:00" content="2016-05-16">
+              2016-05-16
             </time>
           </span>
 
@@ -315,133 +294,125 @@ http://520ued.com/article/549125815f85b6b44ca20b2b
       
 
       
-        <p>目前，主流高性能移动端网页页面布局方案有两种（基于宽度320px，按设计图实现方式）</p>
-<p>1、通过设置viewport缩放来实现</p>
-<p>2、通过rem相对单位来实现</p>
-<p>viewport,rem基础知识，可参见：</p>
-<ul>
-<li><a href="http://www.cnblogs.com/2050/p/3877280.html" target="_blank" rel="external">http://www.cnblogs.com/2050/p/3877280.html</a></li>
-<li><a href="http://520ued.com/article/549125815f85b6b44ca20b2b" target="_blank" rel="external">http://520ued.com/article/549125815f85b6b44ca20b2b</a></li>
-</ul>
-<p>大致说一下实现思路：</p>
-<h4 id="1、通过viewport进行移动端适配："><a href="#1、通过viewport进行移动端适配：" class="headerlink" title="1、通过viewport进行移动端适配："></a>1、通过viewport进行移动端适配：</h4><p>(1) 按照宽度320px实现基本网页布局及样式</p>
-<p>(2) 动态设置viewport属性，做适当缩放</p>
-<p>  eg:通过window.screen.width获取屏幕宽度，如果当前设备屏幕宽度为320px,则缩放比例为320/320=1，<br>  动态设置viewport content initial-scale=1.0,如果屏幕宽度为375，则缩放比例为375/320=1.2</p>
-<pre><code>(function(){
-  var vt=document.getElementById(&quot;viewport&quot;);
-  vt.getAttribute(&quot;content&quot;);
-  var scale=window.screen.width/320;
-  vt.setAttribute(&quot;content&quot;,&quot;width=320,initial-scale=&quot;+scale+&quot;,user-
-  scalable=no&quot;);
- })()
-</code></pre><p>   在chrome进行调试的时候会出现纵向滚动条异位的现象，但在真机测试中不存在这种问题，暂时可以忽略。</p>
-<p> 下面是一个完整的通过缩放实现的布局demo</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-   &lt;meta charset=&quot;UTF-8&quot;&gt;
-   &lt;meta name=&quot;viewport&quot; id=&quot;viewport&quot; content=&quot;&quot;&gt;
-   &lt;title&gt;移动端基于320px缩放适配&lt;/title&gt;
-&lt;/head&gt;
+        <h3 id="一、初识："><a href="#一、初识：" class="headerlink" title="一、初识："></a>一、初识：</h3><p>公司最近在做技术积累，打算尝试组件化开发，提高代码复用，纠结与Vue.js还是React.js,最终，因为Vue.js的大生态偏弱，文档相对较少，并且移动端需求偏多，公司有成型的node环境，React做服务器端渲染比较好，比新技术结合的也不错，所以最终还是入手React。</p>
+<p>因为之前做过Backbone和Angularjs的开发，最初接触node时不大喜欢它整体的编码风格，慢慢接触了几天，发现它整体的思路还是很清晰的，和其他技术结合，比如Sass,样式和效果也并不是想大多数网上数的要写在一起，React 结合ES2015,还是能写出比较优雅的代码。组件复用的确有很大的提升，才感觉自己的工作不那么无聊了，变得有意义，组件库的建立，对之后的开发有很多益处，虽然上手并不是很容易，之前在这方面的经验也不是很多，但还是要不断推进这项工作。</p>
+<p>###二、React基础</p>
+<p>接触了一段时间，整体感觉React不是很难，当然，目前仅仅是React,还没有涉及Flux。<br>我觉得掌握React，主要弄清楚几个概念： props,state,refs,声明周期里的几个函数（挂在之前，组件更新，解挂）</p>
+<p>#####1、props:<br>数据属性域，所有组件间的数据传递都通过props,并且,React为单向数据传递（不知道我理解的对不对，就是数据只能从父组件传递给子组件）。子组件通过this.props.属性名  来访问由父组件传过来数据，属性直接写在组件标签中，设置属性名，即为子组件属性名，不仅能传递数据，还能传递函数，为子组件回调父组件传值提供条件</p>
+<p>eg:1、传递数据</p>
+<pre><code> //父组件：
 
-&lt;script&gt;
-  (function(){
-  var vt=document.getElementById(&quot;viewport&quot;);
-  vt.getAttribute(&quot;content&quot;);
-  var scale=window.screen.width/320;
-  vt.setAttribute(&quot;content&quot;,&quot;width=320,initial-scale=&quot;+scale+&quot;,user-scalable=no&quot;);
-  })()
-&lt;/script&gt;
+ render() {
+    return (
+        &lt;div className=&quot;cityContainer&quot;&gt;
+            &lt;CityList  onItemClick={this.handleItemClick}
+            cityData={this.props.cityData}/&gt;
+        &lt;/div&gt;
+    );
+}
 
- &lt;style&gt;
-  html,body{padding: 0px;margin: 0px;}
-  body{
-    width:320px;
-  }
- .header{width:320px;background-color: #94ffa5;height:40px;}
- .content{width:320px;overflow:hidden}
- .content div{padding-top:20px;padding-bottom:20px;text-align:center;width:160px;float: left}
- .footer{width:320px;background-color: rosybrown;height:40px;}
- &lt;/style&gt;
+//子组件：
 
- &lt;body&gt;
-   &lt;div class=&quot;header&quot;&gt;&lt;/div&gt;
-   &lt;div class=&quot;content&quot;&gt;
-     &lt;div&gt;
-       &lt;p&gt;content1&lt;/p&gt;
-       &lt;p&gt;content1&lt;/p&gt;
-       &lt;p&gt;content1&lt;/p&gt;
-       &lt;p&gt;content1&lt;/p&gt;
-       &lt;p&gt;content1&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-       &lt;p&gt;content2&lt;/p&gt;
-       &lt;p&gt;content2&lt;/p&gt;
-       &lt;p&gt;content2&lt;/p&gt;
-       &lt;p&gt;content2&lt;/p&gt;
-       &lt;p&gt;content2&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;footer&quot;&gt;&lt;/div&gt;
-  &lt;/body&gt;
- &lt;/html&gt;
-</code></pre><h4 id="2、通过rem相对单位实现移动端适配"><a href="#2、通过rem相对单位实现移动端适配" class="headerlink" title="2、通过rem相对单位实现移动端适配"></a>2、通过rem相对单位实现移动端适配</h4><p>大概的思路就是在html根节点定义font-size的值，及设置1rem的宽度，这个宽度也是基于320px基础进行缩放的，如果设备宽度是320px时,设置1rem=10px,对于body 32rem=32 <em> 10=320px;那么当屏幕宽度为375px是，则1rem=12px,body宽度就相应为32rem=32 </em> 12=375px。根节点单位可以通过js来进行初始化</p>
-<pre><code>(function(){
-   var screenwidth=window.screen.width;
-   rootrem=screenwidth/320*10;
-   document.getElementsByTagName(&quot;html&quot;)[0].style.fontSize=rootrem+&quot;px&quot;;
-})()
-</code></pre><p>也可以通过媒体查询进行设置,不过媒体查询在设定阈值时可能不大好做。</p>
-<p>下面是一个完整的通过rem来实现的布局DEMO</p>
-<pre><code> &lt;!DOCTYPE html&gt;
- &lt;html lang=&quot;en&quot;&gt;
- &lt;head&gt;
-   &lt;meta charset=&quot;UTF-8&quot;&gt;
-   &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=0&quot;&gt;
-   &lt;title&gt;rem实现移动端适配,基于320px设计&lt;/title&gt;
- &lt;/head&gt;
+ render() {
+    var cityItemNodes=this.props.cityData.map(function(item){
+        return (
+            &lt;CityItem key={item.id}  cid={item.id}&gt;
+                {item.name}
+            &lt;/CityItem&gt;
+        );
+    })
+    return (
+        &lt;div className=&quot;cityList&quot;&gt;
+            &lt;ul onClick={this.handleClick}&gt;
+                {cityItemNodes}
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    )
+}
+</code></pre><p>eg 2、传递函数，提供回调</p>
+<pre><code>//父组件：
 
- &lt;script&gt;
-//   在不同终端root 1rem,也可以用媒体查询来做
-(function(){
-    var screenwidth=window.screen.width;
-    rootrem=screenwidth/320*10;
-    document.getElementsByTagName(&quot;html&quot;)[0].style.fontSize=rootrem+&quot;px&quot;;
-})()
-&lt;/script&gt;
+handleCommentSubmit(comment){
+    // TODO: submit to the server and refresh the list
 
-&lt;style&gt;
-html,body{padding:0px;margin:0px;}
-/*设置body宽度为屏幕宽度,并重新设置字体大小*/
- body{width:32rem;font-size:14px;}
- .header{width:32rem;height:40px;background-color: #94ffa5}
- .content{overflow:hidden;width:30rem;margin: auto;text-align: center;background-color: antiquewhite}
- .content &gt; div{width: 50%;float: left}
- .footer{width: 32rem;height:40px;background-color:royalblue}
-&lt;/style&gt;
+    var comments = this.state.data;
+    var newComments = comments.concat([comment]);
+    this.setState({data: newComments});
 
-&lt;body&gt;
-  &lt;div class=&quot;header&quot;&gt;&lt;/div&gt;
-   &lt;div class=&quot;content&quot;&gt;
-    &lt;div&gt;
-      &lt;p&gt;content1&lt;/p&gt;
-      &lt;p&gt;content1&lt;/p&gt;
-      &lt;p&gt;content1&lt;/p&gt;
-      &lt;p&gt;content1&lt;/p&gt;
-      &lt;p&gt;content1&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-      &lt;p&gt;content2&lt;/p&gt;
-      &lt;p&gt;content2&lt;/p&gt;
-      &lt;p&gt;content2&lt;/p&gt;
-      &lt;p&gt;content2&lt;/p&gt;
-      &lt;p&gt;content2&lt;/p&gt;
-    &lt;/div&gt;
-   &lt;/div&gt;
-   &lt;div class=&quot;footer&quot;&gt;&lt;/div&gt;
- &lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>chrome调试过程中会出现一个问题，因为chrome浏览器设置了最小font-size=12px,当设置小于12px时不起作用，可以选择其他的调试工具代替，如firforx  User Agent Switcher 。</p>
+}
+render(){
+    return (
+        &lt;div className=&quot;commentBox&quot;&gt;
+            &lt;h1&gt;Comments&lt;/h1&gt;
+            &lt;CommentList   data={this.state.data} /&gt;
+            &lt;CommentForm onCommentSubmit={this.handleCommentSubmit}/&gt;
+        &lt;/div&gt;
+    );
+}
+
+
+//子组件
+
+handleSubmit(e){
+    e.preventDefault();
+
+    var author = this.refs.author.value.trim();
+    var text = this.refs.text.value.trim();
+    if (!text || !author) {
+        return;
+    }
+    // TODO: send request to the server
+    this.props.onCommentSubmit({author: author, text: text});
+    this.refs.author.value = &apos;&apos;;
+    this.refs.text.value = &apos;&apos;;
+    return;
+}
+
+render() {
+    return (
+        &lt;form className=&quot;commentForm&quot; onSubmit={this.handleSubmit}&gt;
+            &lt;input type=&quot;text&quot; placeholder=&quot;Your name&quot; ref=&quot;author&quot; /&gt;
+            &lt;input type=&quot;text&quot; placeholder=&quot;Say something...&quot; ref=&quot;text&quot; /&gt;
+            &lt;input type=&quot;submit&quot; value=&quot;Post&quot; /&gt;
+        &lt;/form&gt;
+    );
+}
+</code></pre><p>####2、state:</p>
+<p>React 的思想是最小state组件，我所理解的就是能够引起状态变化的，把它抽象为最小状态组件，组件状态变化会产生一些影响，如重新请求数据，进行页面渲染，或者引起页面交互。</p>
+<p>####3、refs:</p>
+<p>为操作真是DOM提供支持,this.refs获取真是的DOM，在标签中要有相对应的ref属性。</p>
+<p>eg:</p>
+<pre><code>handleChange() {
+    this.props.onUserInput(
+        this.refs.filterTextInput.value,
+        this.refs.inStockOnlyInput.checked
+    );
+};
+
+render() {
+    return (
+        &lt;form&gt;
+            &lt;input
+                type=&quot;text&quot;
+                placeholder=&quot;Search...&quot;
+                value={this.props.filterText}
+                ref=&quot;filterTextInput&quot;
+                onChange={this.handleChange}
+                /&gt;
+            &lt;p&gt;
+                &lt;input
+                    type=&quot;checkbox&quot;
+                    checked={this.props.inStockOnly}
+                    ref=&quot;inStockOnlyInput&quot;
+                    onChange={this.handleChange}
+                    /&gt;
+                {&apos; &apos;}
+                Only show products in stock
+            &lt;/p&gt;
+        &lt;/form&gt;
+    );
+}
+</code></pre><p>####4、声明周期里几个重要的函数（待补充）</p>
 
       
     </div>
@@ -466,17 +437,13 @@ html,body{padding:0px;margin:0px;}
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/14/hexo环境搭建/" rel="next" title="hexo环境搭建">
-                <i class="fa fa-chevron-left"></i> hexo环境搭建
+              <a href="/2016/05/14/移动端布局方案/" rel="next" title="移动端布局方案">
+                <i class="fa fa-chevron-left"></i> 移动端布局方案
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/16/React初识/" rel="prev" title="React初识">
-                React初识 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -576,7 +543,7 @@ html,body{padding:0px;margin:0px;}
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、通过viewport进行移动端适配："><span class="nav-number">1.</span> <span class="nav-text">1、通过viewport进行移动端适配：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、通过rem相对单位实现移动端适配"><span class="nav-number">2.</span> <span class="nav-text">2、通过rem相对单位实现移动端适配</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、初识："><span class="nav-number">1.</span> <span class="nav-text">一、初识：</span></a></li></ol></div>
             
           </div>
         </section>
