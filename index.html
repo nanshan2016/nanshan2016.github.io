@@ -233,6 +233,269 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/07/1px渲染成2px的场景及解决方案/" itemprop="url">
+                  1px渲染成2px的场景及解决方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-07T11:32:37+08:00" content="2016-08-07">
+              2016-08-07
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1、场景一："><a href="#1、场景一：" class="headerlink" title="1、场景一："></a>1、场景一：</h4><p>IE6 下默认div最小高度为2px，如何创建高为1px的容器？</p>
+<pre><code>.minContainer{font-size:0px;overflow:hidden}
+</code></pre><div class="minContainer">&nbsp;</div>
+
+<h4 id="2、场景二："><a href="#2、场景二：" class="headerlink" title="2、场景二："></a>2、场景二：</h4><p>移动端高分辨率下，将1px border 渲染成2px</p>
+<h5 id="解决方案（1）"><a href="#解决方案（1）" class="headerlink" title="解决方案（1）"></a>解决方案（1）</h5><pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=0.5,user-scalable=no&quot;/&gt;
+然后通过rem进行布局
+</code></pre><h5 id="解决方案（2）"><a href="#解决方案（2）" class="headerlink" title="解决方案（2）"></a>解决方案（2）</h5><pre><code>利用伪元素scale, 模拟边框：
+eg:
+
+&lt;!DOCTYPE html&gt;
+ &lt;html&gt;
+  &lt;head&gt;
+   &lt;meta charset=&quot;UTF-8&quot;&gt;
+   &lt;title&gt;解决1px边框问题&lt;/title&gt;
+   &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0,user-scalable=no&quot;/&gt;
+      &lt;style&gt;
+      .line {position:relative;}
+      .line:after {width:200%;height:200%;position:absolute;top:0;left:0;z-index:0;content:&quot;&quot;;-webkit-transform:scale(0.5);-webkit-transform-origin:0 0;transform:scale(0.5);transform-origin:0 0;}
+
+      .list {width:100%;margin:auto;list-style:none;padding:0;}
+      .list:after {border:1px solid #ccc;border-radius:10px;}
+      .item {padding:10px;}
+      .item:after {border-bottom:1px solid #ccc;}
+      .item:last-child:after {display:none;}
+     &lt;/style&gt;
+  &lt;/head&gt;
+&lt;body&gt;
+
+&lt;ul class=&quot;list line&quot;&gt;
+  &lt;li class=&quot;item line&quot;&gt;item001&lt;br/&gt;sdfdsfsdfds&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item002&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item003&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item004&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item005&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item006&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item007&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item008&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item009&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item010&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h5 id="解决方案（3）"><a href="#解决方案（3）" class="headerlink" title="解决方案（3）"></a>解决方案（3）</h5><pre><code>.shadow{box-shadow:0 1px 1px -1px rgba(0, 0, 0, 0.5);}
+box-shadow andriod会出现一些异常显示
+</code></pre><h5 id="解决方案（4）"><a href="#解决方案（4）" class="headerlink" title="解决方案（4）"></a>解决方案（4）</h5><pre><code>渐变
+.border{position:relative;top:40px;height:1px;background: -webkit-gradient(linear, left top, left bottom, color-stop(.5, transparent), color-stop(.5, #ccc), to(#ccc)) left bottom repeat-x; background-size: 100% 1px; margin-top:20px}
+</code></pre><h5 id="解决方案（5）"><a href="#解决方案（5）" class="headerlink" title="解决方案（5）"></a>解决方案（5）</h5><pre><code> ios7以上版本支持0.5px,可通过js判断是否支持0.5px做降级处理
+
+ if (window.devicePixelRatio &amp;&amp; devicePixelRatio &gt;= 2) {
+    var testElem = document.createElement(&apos;div&apos;);
+    testElem.style.border = &apos;.5px solid transparent&apos;;
+    document.body.appendChild(testElem);
+  if (testElem.offsetHeight == 1)
+  {
+    document.querySelector(&apos;html&apos;).classList.add(&apos;hairlines&apos;);
+  }
+  document.body.removeChild(testElem);
+}
+</code></pre><h5 id="解决方案（6）"><a href="#解决方案（6）" class="headerlink" title="解决方案（6）"></a>解决方案（6）</h5><p> background-image   linear-gradient</p>
+<pre><code>.border {
+         background-image:linear-gradient(180deg, red, red 50%, transparent 50%),
+         linear-gradient(270deg, red, red 50%, transparent 50%),
+         linear-gradient(0deg, red, red 50%, transparent 50%),
+         linear-gradient(90deg, red, red 50%, transparent 50%);
+         background-size: 100% 1px,1px 100% ,100% 1px, 1px 100%;
+         background-repeat: no-repeat;
+         background-position: top, right top,  bottom, left top;
+         padding: 10px;
+     }
+</code></pre><h5 id="解决方案（7）"><a href="#解决方案（7）" class="headerlink" title="解决方案（7）"></a>解决方案（7）</h5><p>border-image</p>
+<pre><code>.border3 {
+          border-image:url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB5JREFUeNpiPnH8zH/G////MzAxAAHTyRNn/wMEGABpvQm9g9TJ1QAAAABJRU5ErkJggg==&quot;) 2 0 stretch;
+          border-width: 0px 0px 1px;
+      }
+</code></pre><p>  iphone6 plus渲染成3px  通过@media 进行相应设置</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/07/1、场景一：/" itemprop="url">
+                  1、场景一：
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-07T11:31:52+08:00" content="2016-08-07">
+              2016-08-07
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/11/关于前端的几个问题的感悟/" itemprop="url">
                   关于前端的几个问题的感悟
                 </a>
@@ -1026,7 +1289,7 @@ hexo deploy
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

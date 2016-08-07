@@ -1,0 +1,614 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1、场景一：IE6 下默认div最小高度为2px，如何创建高为1px的容器？
+.minContainer{font-size:0px;overflow:hidden}
+&amp;nbsp;
+
+2、场景二：移动端高分辨率下，将1px border 渲染成2px
+解决方案（1）&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1px渲染成2px的场景及解决方案">
+<meta property="og:url" content="http://yoursite.com/2016/08/07/1px渲染成2px的场景及解决方案/index.html">
+<meta property="og:site_name" content="南山的博客">
+<meta property="og:description" content="1、场景一：IE6 下默认div最小高度为2px，如何创建高为1px的容器？
+.minContainer{font-size:0px;overflow:hidden}
+&amp;nbsp;
+
+2、场景二：移动端高分辨率下，将1px border 渲染成2px
+解决方案（1）&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width">
+<meta property="og:updated_time" content="2016-08-07T03:34:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1px渲染成2px的场景及解决方案">
+<meta name="twitter:description" content="1、场景一：IE6 下默认div最小高度为2px，如何创建高为1px的容器？
+.minContainer{font-size:0px;overflow:hidden}
+&amp;nbsp;
+
+2、场景二：移动端高分辨率下，将1px border 渲染成2px
+解决方案（1）&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 1px渲染成2px的场景及解决方案 | 南山的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">南山的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                1px渲染成2px的场景及解决方案
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-07T11:32:37+08:00" content="2016-08-07">
+              2016-08-07
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="1、场景一："><a href="#1、场景一：" class="headerlink" title="1、场景一："></a>1、场景一：</h4><p>IE6 下默认div最小高度为2px，如何创建高为1px的容器？</p>
+<pre><code>.minContainer{font-size:0px;overflow:hidden}
+</code></pre><div class="minContainer">&nbsp;</div>
+
+<h4 id="2、场景二："><a href="#2、场景二：" class="headerlink" title="2、场景二："></a>2、场景二：</h4><p>移动端高分辨率下，将1px border 渲染成2px</p>
+<h5 id="解决方案（1）"><a href="#解决方案（1）" class="headerlink" title="解决方案（1）"></a>解决方案（1）</h5><pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=0.5,user-scalable=no&quot;/&gt;
+然后通过rem进行布局
+</code></pre><h5 id="解决方案（2）"><a href="#解决方案（2）" class="headerlink" title="解决方案（2）"></a>解决方案（2）</h5><pre><code>利用伪元素scale, 模拟边框：
+eg:
+
+&lt;!DOCTYPE html&gt;
+ &lt;html&gt;
+  &lt;head&gt;
+   &lt;meta charset=&quot;UTF-8&quot;&gt;
+   &lt;title&gt;解决1px边框问题&lt;/title&gt;
+   &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0,user-scalable=no&quot;/&gt;
+      &lt;style&gt;
+      .line {position:relative;}
+      .line:after {width:200%;height:200%;position:absolute;top:0;left:0;z-index:0;content:&quot;&quot;;-webkit-transform:scale(0.5);-webkit-transform-origin:0 0;transform:scale(0.5);transform-origin:0 0;}
+
+      .list {width:100%;margin:auto;list-style:none;padding:0;}
+      .list:after {border:1px solid #ccc;border-radius:10px;}
+      .item {padding:10px;}
+      .item:after {border-bottom:1px solid #ccc;}
+      .item:last-child:after {display:none;}
+     &lt;/style&gt;
+  &lt;/head&gt;
+&lt;body&gt;
+
+&lt;ul class=&quot;list line&quot;&gt;
+  &lt;li class=&quot;item line&quot;&gt;item001&lt;br/&gt;sdfdsfsdfds&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item002&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item003&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item004&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item005&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item006&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item007&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item008&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item009&lt;/li&gt;
+  &lt;li class=&quot;item line&quot;&gt;item010&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h5 id="解决方案（3）"><a href="#解决方案（3）" class="headerlink" title="解决方案（3）"></a>解决方案（3）</h5><pre><code>.shadow{box-shadow:0 1px 1px -1px rgba(0, 0, 0, 0.5);}
+box-shadow andriod会出现一些异常显示
+</code></pre><h5 id="解决方案（4）"><a href="#解决方案（4）" class="headerlink" title="解决方案（4）"></a>解决方案（4）</h5><pre><code>渐变
+.border{position:relative;top:40px;height:1px;background: -webkit-gradient(linear, left top, left bottom, color-stop(.5, transparent), color-stop(.5, #ccc), to(#ccc)) left bottom repeat-x; background-size: 100% 1px; margin-top:20px}
+</code></pre><h5 id="解决方案（5）"><a href="#解决方案（5）" class="headerlink" title="解决方案（5）"></a>解决方案（5）</h5><pre><code> ios7以上版本支持0.5px,可通过js判断是否支持0.5px做降级处理
+
+ if (window.devicePixelRatio &amp;&amp; devicePixelRatio &gt;= 2) {
+    var testElem = document.createElement(&apos;div&apos;);
+    testElem.style.border = &apos;.5px solid transparent&apos;;
+    document.body.appendChild(testElem);
+  if (testElem.offsetHeight == 1)
+  {
+    document.querySelector(&apos;html&apos;).classList.add(&apos;hairlines&apos;);
+  }
+  document.body.removeChild(testElem);
+}
+</code></pre><h5 id="解决方案（6）"><a href="#解决方案（6）" class="headerlink" title="解决方案（6）"></a>解决方案（6）</h5><p> background-image   linear-gradient</p>
+<pre><code>.border {
+         background-image:linear-gradient(180deg, red, red 50%, transparent 50%),
+         linear-gradient(270deg, red, red 50%, transparent 50%),
+         linear-gradient(0deg, red, red 50%, transparent 50%),
+         linear-gradient(90deg, red, red 50%, transparent 50%);
+         background-size: 100% 1px,1px 100% ,100% 1px, 1px 100%;
+         background-repeat: no-repeat;
+         background-position: top, right top,  bottom, left top;
+         padding: 10px;
+     }
+</code></pre><h5 id="解决方案（7）"><a href="#解决方案（7）" class="headerlink" title="解决方案（7）"></a>解决方案（7）</h5><p>border-image</p>
+<pre><code>.border3 {
+          border-image:url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB5JREFUeNpiPnH8zH/G////MzAxAAHTyRNn/wMEGABpvQm9g9TJ1QAAAABJRU5ErkJggg==&quot;) 2 0 stretch;
+          border-width: 0px 0px 1px;
+      }
+</code></pre><p>  iphone6 plus渲染成3px  通过@media 进行相应设置</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/07/1、场景一：/" rel="next" title="1、场景一：">
+                <i class="fa fa-chevron-left"></i> 1、场景一：
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/nanshan.jpg"
+               alt="南山" />
+          <p class="site-author-name" itemprop="name">南山</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、场景一："><span class="nav-number">1.</span> <span class="nav-text">1、场景一：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、场景二："><span class="nav-number">2.</span> <span class="nav-text">2、场景二：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方案（1）"><span class="nav-number">2.1.</span> <span class="nav-text">解决方案（1）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方案（2）"><span class="nav-number">2.2.</span> <span class="nav-text">解决方案（2）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方案（3）"><span class="nav-number">2.3.</span> <span class="nav-text">解决方案（3）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方案（4）"><span class="nav-number">2.4.</span> <span class="nav-text">解决方案（4）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方案（5）"><span class="nav-number">2.5.</span> <span class="nav-text">解决方案（5）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方案（6）"><span class="nav-number">2.6.</span> <span class="nav-text">解决方案（6）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方案（7）"><span class="nav-number">2.7.</span> <span class="nav-text">解决方案（7）</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">南山</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
